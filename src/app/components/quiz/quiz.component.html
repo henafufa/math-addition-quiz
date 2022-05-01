@@ -10,15 +10,12 @@
     </header>
 
     <section class="mt-4">
-        <!-- <div class="alert alert-info alert-dismissible d-flex" role="alert">
-            <div class="alert-icon">
-                <i class="icon-info">Hello</i>
-            </div>
+        <div class="alert alert-info alert-dismissible d-flex" role="alert" *ngIf="messageShow">
             <div class="alert-message ">
                 <span id="message"></span>
             </div>
             <div class="icon tick"><i class="fas fa-check"></i></div>
-        </div> -->
+        </div>
         <div class="game__Container-question">
             <div class="game__Container-equation">
                 <div class="equation__element">
@@ -34,7 +31,7 @@
                     <h1>=</h1>
                 </div>
                 <div class="equation__element">
-                    <input #answer type="text" (keyup.enter)="onEnter(answer.value)" class="p-2">
+                    <input #answer type="text" (keyup.enter)="onEnter(answer.value)" class="p-1">
                 </div>
             </div>
         </div>
@@ -46,7 +43,7 @@
                 <p> <strong>{{questionTotal}}</strong> of <strong>{{question_data.length}}</strong> Questions </p>
             </span>
         </div>
-        <button class="game__Container-button" disabled={!correctAnswer} (click)="getNextQuestion()">Next Que</button>
+        <button class="game__Container-button" [disabled]="(userAnswer === correctAnswer)? true : false" (click)="getNextQuestion()">Next Que</button>
     </footer>
 </div>
 

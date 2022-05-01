@@ -31,7 +31,6 @@ export class QuizComponent implements OnInit {
       (res: any) => {
         this.question_data = res;
         this.question_data_1 = res[0];
-        console.log('questions:', this.question_data, this.question_data_1);
       },
       (error) => {
         console.log(`Error:${error}`);
@@ -54,7 +53,6 @@ export class QuizComponent implements OnInit {
   getNextQuestion = () => {
     this.messageShow = false;
     clearInterval(this.counter);
-    this.question_data[this.index];
     this.timeCounter(this.givenTime);
     if (this.index < this.question_data.length - 1) {
       this.index++;
