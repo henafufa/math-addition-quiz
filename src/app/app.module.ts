@@ -8,14 +8,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { QuizComponent } from './components/quiz/quiz.component';
 import { InfoComponent } from './components/info/info.component';
-import { ResultComponent } from './components/result/result.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     QuizComponent,
-    InfoComponent,
-    ResultComponent
+    InfoComponent
   ],
   imports: [
     BrowserModule,

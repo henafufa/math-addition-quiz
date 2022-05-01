@@ -10,36 +10,36 @@ import { QUESTION } from '../../models/question';
 export class QuizComponent implements OnInit {
 
   question_data!: QUESTION[];
-  question_data_1!: QUESTION;
   counter: any | undefined;
-  timer=0;
+  timer = 0;
   index: number = 0;
   questionTotal = 1;
-  userAnswer = '';
-  correctAnswer = '';
   totalAnswered = 0;
-  questionAnswered = false;
-  messageShow: boolean = false;
-  givenTime = 20;
+  givenTime = 8;
   done: boolean = false;
 
   constructor(private additionService: AdditionService, private router: Router) { }
 
   ngOnInit(): void {
 
-    this.additionService.getQuestion().subscribe(
+    this.getQuestions();
+    this.timeCounter(this.givenTime);
+  }
+
+  // Getting all questions
+  getQuestions = () => {
+    this.additionService.getQuestions().subscribe(
       (res: any) => {
         this.question_data = res;
-        this.question_data_1 = res[0];
+        console.log('res:', res);
       },
       (error) => {
         console.log(`Error:${error}`);
       }
     );
-
-    this.timeCounter(this.givenTime);
   }
 
+  // set time count time
   timeCounter = (time: any) => {
     this.counter = setInterval(() => {
       this.timer = time;
@@ -50,44 +50,42 @@ export class QuizComponent implements OnInit {
     }, 1000)
   }
 
+  // Call the next question
   getNextQuestion = () => {
-    this.messageShow = false;
-    this.questionAnswered = false;
     clearInterval(this.counter);
     this.timeCounter(this.givenTime);
     if (this.index < this.question_data.length - 1) {
       this.index++;
-      this.question_data_1 = this.question_data[this.index];
       this.questionTotal++;
     }
     else {
       clearInterval(this.counter);
       this.done = true;
-      // this.router.navigate(['/quiz/result']);
+      let element: any = document.getElementById('gameContainer');
+      element.style.display = 'none';
       console.log("Question completed");
     }
   }
 
   onEnter = (answer: string) => {
-    let message: any = document.getElementById('message');
-    this.messageShow = true;
-    this.userAnswer = answer;
-    this.correctAnswer = (this.question_data_1.number1 + this.question_data_1.number2).toString();
-    if (this.userAnswer == this.correctAnswer) {
-      this.questionAnswered = true;
+    let correctAnswer = (this.question_data[this.index].number1 + this.question_data[this.index].number2).toString();
+    console.log(`user answer: ${answer} correct answer: ${correctAnswer}`);
+    if (answer == correctAnswer) {
       this.totalAnswered++;
-      message.innerHTML = "Well Done! Your Answer is Correct";
       this.getNextQuestion();
     }
     else {
-      this.questionAnswered = false;
-      if (this.timer < 2) {
-        message.innerHTML = "Your Answer is Incorrect. The Answer is: " + this.correctAnswer;
-      }
-      else {
-        message.innerHTML = "Your Answer is Incorrect. Try Again";
-      }
+      
+
     }
 
+  }
+
+  Retest = () => {
+    let element: any = document.getElementById('gameContainer');
+    element.style.display = 'block';
+    this.done = false;
+    this.index = 0;
+    this.getNextQuestion();
   }
 }

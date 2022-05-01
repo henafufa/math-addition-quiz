@@ -13,7 +13,8 @@ export class AdditionService {
   private API_URL = 'api/questions';
   constructor(private http: HttpClient) { }
 
-  getQuestion(): Observable<QUESTION[]> {
+  //Getting all questions from mock data server
+  getQuestions(): Observable<QUESTION[]> {
     return this.http.get<QUESTION[]>(this.API_URL).pipe(
       tap(_ => console.log('question returned'))
     );

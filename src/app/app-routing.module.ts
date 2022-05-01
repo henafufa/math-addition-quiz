@@ -3,10 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { QuizComponent } from './components/quiz/quiz.component';
 import { InfoComponent } from './components/info/info.component';
 
-import { ResultComponent } from './components/result/result.component';
-
 const routes: Routes = [
-  {path: '', redirectTo: 'info', pathMatch: 'full'},
+  {
+    path: '', redirectTo: 'info', pathMatch: 'full'
+  },
   {
     path: 'info',
     component: InfoComponent
@@ -14,10 +14,6 @@ const routes: Routes = [
   {
     path: 'quiz',
     component: QuizComponent
-  },
-  {
-    path: 'quiz/result',
-    component: ResultComponent
   }
 ];
 
