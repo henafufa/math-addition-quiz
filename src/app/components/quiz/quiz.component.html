@@ -1,0 +1,62 @@
+<div class="container game__container" id="gameContainer">
+    <header>
+        <div class="game__Container-title">
+            Math Addition Game
+        </div>
+        <div class="game__Container-timer text-center">
+            <div class="timer__text">Time left</div>
+            <div class="timer__count">0{{timer}}</div>
+        </div>
+    </header>
+
+    <section class="mt-4">
+        <!-- <div class="alert alert-info alert-dismissible d-flex" role="alert">
+            <div class="alert-icon">
+                <i class="icon-info">Hello</i>
+            </div>
+            <div class="alert-message ">
+                <span id="message"></span>
+            </div>
+            <div class="icon tick"><i class="fas fa-check"></i></div>
+        </div> -->
+        <div class="game__Container-question">
+            <div class="game__Container-equation">
+                <div class="equation__element">
+                    <h1 id="number1">{{question_data_1.number1}}</h1>
+                </div>
+                <div class="equation__element">
+                    <h1>+</h1>
+                </div>
+                <div class="equation__element">
+                    <h1 id="number2">{{question_data_1.number2}}</h1>
+                </div>
+                <div class="equation__element">
+                    <h1>=</h1>
+                </div>
+                <div class="equation__element">
+                    <input #answer type="text" (keyup.enter)="onEnter(answer.value)" class="p-2">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="game__Container-count">
+            <span>
+                <p> <strong>{{questionTotal}}</strong> of <strong>{{question_data.length}}</strong> Questions </p>
+            </span>
+        </div>
+        <button class="game__Container-button" disabled={!correctAnswer} (click)="getNextQuestion()">Next Que</button>
+    </footer>
+</div>
+
+
+<ng-template *ngIf="done">
+    <div class="result-container">
+        <div class="result-container-message">
+            <h2> You answered correctly at {{totalAnswered}}/{{question_data.length}} questions</h2>
+            <br>
+        </div>
+        <button onclick="location.reload()">Reload</button>
+    </div>
+</ng-template>

@@ -1,0 +1,36 @@
+@import "../../../styles.scss";
+
+.result-container {
+    background-color: $white;
+    border-radius: 12px;
+    box-shadow: 0 0 10px 2px rgba(100, 100, 100, 0.1);
+    overflow: hidden;
+
+    .result-container-message {
+        padding: 4rem;
+    }
+
+    button {
+        background: $bg-color;
+        background: -webkit-linear-gradient(to right, $button-color, $bg-color);
+        background: linear-gradient(to right, $button-color, $bg-color);
+        border: none;
+        color: $white;
+        display: block;
+        font-family: inherit;
+        font-size: 1rem;
+        font-weight: bold;
+        width: 100%;
+        padding: 0.8rem;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $color_default;
+        }
+
+        &:focus {
+            background-color: $bg-color;
+            outline: none;
+        }
+    }
+}

@@ -1,0 +1,183 @@
+@import "../../../styles.scss";
+
+.game__container {
+    background: $white;
+    border-radius: 10px;
+
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 70px;
+        padding: 0 20px;
+        background: $white;
+        border-radius: 5px 5px 0 0;
+        box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.1);
+        z-index: 99;
+        
+        .game__Container-title{
+            font-size: 20px;
+            font-weight: bolder;
+        }
+
+        .game__Container-timer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 145px;
+            height: 45px;
+            font-size: 20px;
+            font-weight: 600;
+            background: $color-accent;
+            border: 1px solid #b8daff;
+            border-radius: 5px;
+            padding: 0 8px;
+
+            .timer__text {
+                font-weight: 400px;
+                font-size: 17px;
+                user-select: none;
+            }
+
+            .timer__count {
+                background: $color-black;
+                color: $white;
+                text-align: center;
+                font-size: 18px;
+                font-weight: 500px;
+                height: 30px;
+                width: 45px;
+                line-height: 30px;
+                border: 1px solid $timer_border;
+                border-radius: 5px;
+                user-select: none;
+            }
+
+        }
+    }
+
+    section {
+        padding: 10px 30px 20px 30px;
+
+        .game__Container-question {
+            h1 {
+                font-size: 50px;
+                font-weight: 600;
+            }
+        }
+
+        .game__Container-equation {
+            display: flex;
+            padding: 35px 35px;
+
+            .equation__element {
+                padding: 8px 8px;
+
+                input {
+                    width: 8vw;
+                    border: 7px solid $color-black;
+                }
+            }
+
+            .correct {
+                color: #155724;
+                background: #d4edda;
+                border-color: #c3e6cb;
+            }
+
+            .incorrect {
+                color: #a42834;
+                background: #f8d7da;
+                border-color: #f5c6c6;
+            }
+
+            .icon {
+                height: 26px;
+                width: 26px;
+                border: 2px solid transparent;
+                border-radius: 50%;
+                text-align: center;
+                font-size: 13px;
+                line-height: 24px;
+                pointer-events: none;
+            }
+        }
+    }
+
+    footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: 60px;
+        padding: 0 30px;
+        border-top: 1px solid $color-grey;
+
+        .game__Container-count {
+            span {
+                display: flex;
+                user-select: none;
+            }
+        }
+
+        .game__Container-button {
+            background: $bg-color;
+            background: -webkit-linear-gradient(to right, $button-color, $bg-color);
+            background: linear-gradient(to right, $button-color, $bg-color);
+            height: 40px;
+            padding: 0 13px;
+            font-size: 0.8rem;
+            font-weight: 400;
+            font-family: inherit;
+            color: #fff;
+            border: none;
+            outline: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background: $color_default;
+            }
+        }
+    }
+
+    .disableContainer {
+        display: none;
+    }
+}
+
+.result-container {
+    background-color: $white;
+    border-radius: 12px;
+    box-shadow: 0 0 10px 2px rgba(100, 100, 100, 0.1);
+    overflow: hidden;
+
+    .result-container-message {
+        padding: 4rem;
+    }
+
+    button {
+        background: $bg-color;
+        background: -webkit-linear-gradient(to right, $button-color, $bg-color);
+        background: linear-gradient(to right, $button-color, $bg-color);
+        border: none;
+        color: $white;
+        display: block;
+        font-family: inherit;
+        font-size: 1rem;
+        font-weight: bold;
+        width: 100%;
+        padding: 0.8rem;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $color_default;
+        }
+
+        &:focus {
+            background-color: $bg-color;
+            outline: none;
+        }
+    }
+}

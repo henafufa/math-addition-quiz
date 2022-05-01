@@ -1,1 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+$bg-color: #E8CBC0;
+$bg-color-2:#D3CCE3;
+$bg-color-3:#E9E4F0;
+$white: #fff;
+$color_default:#84c5fe;
+$timer_border:#343a40;
+$color-black: #212121;
+$color-grey:lightgrey;
+$color-accent: #cce8d7;
+$button-color:#636FA4;
+$border-color: #d5d5d5;
+$color-second:#007bff;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: $bg-color-2;
+    background: -webkit-linear-gradient(to right, $bg-color-3, $bg-color-2);
+    background: linear-gradient(to right, $bg-color-3, $bg-color-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    min-height: 90vh;
+}
+
+h1 {
+    color: $color-black;
+}
+
+p {
+    font-family: Almarai;
+    font-size: 16px;
+    font-weight: normal;
+    color: $color-black;
+}

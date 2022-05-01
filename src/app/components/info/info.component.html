@@ -1,0 +1,24 @@
+<div class=" container info__container">
+
+    <div class="info__container-start" *ngIf="show">
+        <button (click)="startGame()"> Start Game </button>
+    </div>
+
+    <div class="info__container-guides" #ruleContainer *ngIf="!show">
+        <div class="info__container-title align-items-center">
+            <span class="p-5"> Some rule of this Math game</span>
+        </div>
+        <div class="info__container-rules">
+            <div class="rule mt-3"> <strong>1.</strong> You can't return to previous question.</div>
+            <div class="rule mt-3"> <strong>2.</strong> You will have only <span> 3 seconds </span>per each question.
+            </div>
+            <div class="rule mt-3"> <strong>3.</strong> You'll get one point for each correct answers</div>
+            <div class="rule mt-3"> <strong>4.</strong> You can't exit from the Game while you're playing </div>
+        </div>
+        <div class="info__container-button">
+            <button class="quit " (click)="ExitGame()"> Exit Game</button>
+            <button class="continue" (click)="continueGame()"> Continue</button>
+        </div>
+    </div>
+
+</div>
