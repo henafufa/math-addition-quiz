@@ -12,7 +12,7 @@ export class QuizComponent implements OnInit {
   question_data!: QUESTION[];
   question_data_1!: QUESTION;
   counter: any | undefined;
-  timer: number | undefined
+  timer=0;
   index: number = 0;
   questionTotal = 1;
   userAnswer = '';
@@ -20,7 +20,7 @@ export class QuizComponent implements OnInit {
   totalAnswered = 0;
   questionAnswered = false;
   messageShow: boolean = false;
-  givenTime = 9;
+  givenTime = 20;
   done: boolean = false;
 
   constructor(private additionService: AdditionService, private router: Router) { }
@@ -52,6 +52,7 @@ export class QuizComponent implements OnInit {
 
   getNextQuestion = () => {
     this.messageShow = false;
+    this.questionAnswered = false;
     clearInterval(this.counter);
     this.timeCounter(this.givenTime);
     if (this.index < this.question_data.length - 1) {
@@ -73,7 +74,6 @@ export class QuizComponent implements OnInit {
     this.userAnswer = answer;
     this.correctAnswer = (this.question_data_1.number1 + this.question_data_1.number2).toString();
     if (this.userAnswer == this.correctAnswer) {
-      this.correctAnswer = this.userAnswer;
       this.questionAnswered = true;
       this.totalAnswered++;
       message.innerHTML = "Well Done! Your Answer is Correct";
@@ -81,32 +81,13 @@ export class QuizComponent implements OnInit {
     }
     else {
       this.questionAnswered = false;
-      if (!(this.timer == 2)) {
-        message.innerHTML = "Your Answer is Incorrect. Try Again";
+      if (this.timer < 2) {
+        message.innerHTML = "Your Answer is Incorrect. The Answer is: " + this.correctAnswer;
       }
       else {
-        message.innerHTML = "Your Answer is Incorrect. The Answer is: " + this.correctAnswer;
+        message.innerHTML = "Your Answer is Incorrect. Try Again";
       }
     }
 
   }
-
-  // getAnswer = (answer: any) => {
-  //   let element: any = document.getElementById('choicesId');
-  //   let wrong: any = document.getElementsByClassName('icon');
-  //   let userAnswer = answer;
-  //   console.log(`user input: ${userAnswer}`);
-  //   if (userAnswer === 7) {
-  //     this.answered = true;
-  //     element.classList.add("correct");
-  //     this.correctAnswers++;
-  //     console.log("Answer is correct:");
-  //   }
-  //   else {
-  //     this.answered = false;
-  //     element.classList.add("incorrect");
-  //     console.log("Answer is not correct:");
-
-  //   }
-  // }
 }

@@ -18,7 +18,6 @@ export class InfoComponent implements OnInit {
   }
 
   ExitGame() {
-    console.log("exit clicked");
     this.show = !this.show;
   }
   continueGame() {
