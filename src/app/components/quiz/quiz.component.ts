@@ -84,6 +84,7 @@ export class QuizComponent implements OnInit {
 
   // Listen to input 
   onEnter = (answer: string) => {
+    let input: any = document.getElementById('input');
     let correctAnswer = (this.question_data[this.index].number1 + this.question_data[this.index].number2).toString();
     if (answer == correctAnswer) {
       this.container.nativeElement.innerHTML = ` <div class="alert alert-info alert-dismissible d-flex" role="alert">
@@ -94,7 +95,10 @@ export class QuizComponent implements OnInit {
             </div>
       `;
       this.totalAnswered++;
-      this.getNextQuestion();
+      input.disabled = true;
+      setTimeout(() => {
+        this.getNextQuestion();
+      }, 2000);
     }
 
     else {
@@ -114,6 +118,8 @@ export class QuizComponent implements OnInit {
     element.style.display = 'block';
     this.done = false;
     this.index = 0;
+    this.questionTotal = 0;
+    this.totalAnswered = 0;
     this.getNextQuestion();
   }
 }

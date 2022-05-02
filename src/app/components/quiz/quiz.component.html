@@ -38,7 +38,7 @@
                 <p> <strong>{{questionTotal}}</strong> of <strong>{{question_data.length}}</strong> Questions </p>
             </span>
         </div>
-        <button class="game__Container-button" (click)="getNextQuestion()">Next Que</button>
+        <button class="game__Container-button" [disabled]="timer != 0" (click)="getNextQuestion()">Next Que</button>
     </footer>
 </div>
 
