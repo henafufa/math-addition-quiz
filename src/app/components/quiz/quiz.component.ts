@@ -20,7 +20,7 @@ export class QuizComponent implements OnInit {
 
   success = "Well Done! Your Answer is Correct!";
   tryAgain = "Your Answer is Incorrect. Try Again";
-  answer = "Your Answer is Incorrect. The Answer is: ";
+  answer = "You Didn't Get it Right. The Answer is: ";
 
   constructor(private additionService: AdditionService, private router: Router) { }
   @ViewChild('container')
@@ -36,7 +36,6 @@ export class QuizComponent implements OnInit {
     this.additionService.getQuestions().subscribe(
       (res: any) => {
         this.question_data = res;
-        console.log('res:', res);
       },
       (error) => {
         console.log(`Error:${error}`);
@@ -46,17 +45,29 @@ export class QuizComponent implements OnInit {
 
   // Set time to count
   timeCounter = (time: any) => {
+    let input: any = document.getElementById('input');
     this.counter = setInterval(() => {
       this.timer = time;
       time--;
       if (this.timer == 0) {
-        this.getNextQuestion();
+        time = 0;
+        input.disabled = true;
+        this.container.nativeElement.innerHTML = ` <div class="alert alert-info alert-dismissible d-flex" role="alert">
+        <div class="alert-message ">
+            <span id="message">${this.answer}${this.question_data[this.index].number1 + this.question_data[this.index].number2}</span>
+        </div>
+    </div>
+  `;
       }
     }, 1000)
   }
 
   // Call the next question
   getNextQuestion = () => {
+    let input: any = document.getElementById('input');
+    input.disabled = false;
+    input.value = '';
+    this.container.nativeElement.innerHTML = "";
     clearInterval(this.counter);
     this.timeCounter(this.givenTime);
     if (this.index < this.question_data.length - 1) {
@@ -68,18 +79,13 @@ export class QuizComponent implements OnInit {
       this.done = true;
       let element: any = document.getElementById('gameContainer');
       element.style.display = 'none';
-      console.log("Question completed");
     }
   }
 
   // Listen to input 
   onEnter = (answer: string) => {
-    let input: any = document.getElementById('input');
     let correctAnswer = (this.question_data[this.index].number1 + this.question_data[this.index].number2).toString();
-    console.log(`user answer: ${answer} correct answer: ${correctAnswer}`);
     if (answer == correctAnswer) {
-      this.getNextQuestion();
-      input.value = '';
       this.container.nativeElement.innerHTML = ` <div class="alert alert-info alert-dismissible d-flex" role="alert">
                 <div class="alert-message ">
                     <span id="message">${this.success}</span>
@@ -88,6 +94,7 @@ export class QuizComponent implements OnInit {
             </div>
       `;
       this.totalAnswered++;
+      this.getNextQuestion();
     }
 
     else {

@@ -1,9 +1,9 @@
 <div class="container game__container" id="gameContainer">
-    <header>
+    <header class="d-flex">
         <div class="game__Container-title">
             Math Addition Game
         </div>
-        <div class="game__Container-timer text-center">
+        <div class="game__Container-timer d-flex text-center">
             <div class="timer__text">Time left</div>
             <div class="timer__count">0{{timer}}</div>
         </div>
@@ -12,7 +12,7 @@
     <section class="mt-4">
         <div #container></div>
         <div class="game__Container-question">
-            <div class="game__Container-equation">
+            <div class="game__Container-equation d-flex">
                 <div class="equation__element">
                     <h1 id="number1">{{question_data[index].number1}}</h1>
                 </div>
@@ -32,8 +32,8 @@
         </div>
     </section>
 
-    <footer>
-        <div class="game__Container-count">
+    <footer class="d-flex">
+        <div class="game__Container-count d-flex">
             <span>
                 <p> <strong>{{questionTotal}}</strong> of <strong>{{question_data.length}}</strong> Questions </p>
             </span>

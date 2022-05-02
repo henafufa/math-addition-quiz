@@ -33,7 +33,6 @@
         border-radius: 15px;
 
         .info__container-title {
-            display: flex;
             height: 60px;
             width: 100%;
             border-bottom: 1px solid $color-grey;
@@ -55,7 +54,6 @@
         }
 
         .info__container-button {
-            display: flex;
             align-items: center;
             justify-content: flex-end;
             height: 60px;

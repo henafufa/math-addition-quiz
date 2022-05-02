@@ -5,7 +5,7 @@
     </div>
 
     <div class="info__container-guides" #ruleContainer *ngIf="!show">
-        <div class="info__container-title align-items-center">
+        <div class="info__container-title d-flex align-items-center">
             <span class="p-5"> Some rule of this Math game</span>
         </div>
         <div class="info__container-rules">
@@ -15,7 +15,7 @@
             <div class="rule mt-3"> <strong>3.</strong> You'll get one point for each correct answers</div>
             <div class="rule mt-3"> <strong>4.</strong> You can't exit from the Game while you're playing </div>
         </div>
-        <div class="info__container-button">
+        <div class="info__container-button d-flex">
             <button class="quit " (click)="ExitGame()"> Exit Game</button>
             <button class="continue" (click)="continueGame()"> Continue</button>
         </div>
