@@ -80,20 +80,9 @@
                     border: 7px solid $color-black;
                 }
             }
-
-            .correct {
-                color: #155724;
-                background: #d4edda;
-                border-color: #c3e6cb;
-            }
-
-            .incorrect {
-                color: #a42834;
-                background: #f8d7da;
-                border-color: #f5c6c6;
-            }
-
+            
             .icon {
+                padding-left: 30px;
                 height: 26px;
                 width: 26px;
                 border: 2px solid transparent;

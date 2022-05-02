@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdditionService } from 'src/app/services/addition.service';
 import { QUESTION } from '../../models/question';
@@ -18,10 +18,15 @@ export class QuizComponent implements OnInit {
   givenTime = 8;
   done: boolean = false;
 
+  success = "Well Done! Your Answer is Correct!";
+  tryAgain = "Your Answer is Incorrect. Try Again";
+  answer = "Your Answer is Incorrect. The Answer is: ";
+
   constructor(private additionService: AdditionService, private router: Router) { }
+  @ViewChild('container')
+  container!: ElementRef;
 
   ngOnInit(): void {
-
     this.getQuestions();
     this.timeCounter(this.givenTime);
   }
@@ -39,7 +44,7 @@ export class QuizComponent implements OnInit {
     );
   }
 
-  // set time count time
+  // Set time to count
   timeCounter = (time: any) => {
     this.counter = setInterval(() => {
       this.timer = time;
@@ -67,20 +72,36 @@ export class QuizComponent implements OnInit {
     }
   }
 
+  // Listen to input 
   onEnter = (answer: string) => {
+    let input: any = document.getElementById('input');
     let correctAnswer = (this.question_data[this.index].number1 + this.question_data[this.index].number2).toString();
     console.log(`user answer: ${answer} correct answer: ${correctAnswer}`);
     if (answer == correctAnswer) {
-      this.totalAnswered++;
       this.getNextQuestion();
+      input.value = '';
+      this.container.nativeElement.innerHTML = ` <div class="alert alert-info alert-dismissible d-flex" role="alert">
+                <div class="alert-message ">
+                    <span id="message">${this.success}</span>
+                </div>
+                <div class="icon"><i class="fas fa-check"></i></div>
+            </div>
+      `;
+      this.totalAnswered++;
     }
+
     else {
-      
-
+      this.container.nativeElement.innerHTML = ` <div class="alert alert-danger alert-dismissible d-flex" role="alert">
+              <div class="alert-message ">
+                  <span id="message">${this.tryAgain}</span>
+              </div>
+              <div class="icon"><i class="fas fa-times"></i></div>
+          </div>
+        `;
     }
-
   }
 
+  //Take the test again
   Retest = () => {
     let element: any = document.getElementById('gameContainer');
     element.style.display = 'block';

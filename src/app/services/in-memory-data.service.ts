@@ -28,10 +28,10 @@ export class InMemoryDataService implements InMemoryDbService {
         number1: Math.floor(Math.random() * 10),
         number2: Math.floor(Math.random() * 10)
       },
-      // {
-      //   number1: Math.floor(Math.random() * 10),
-      //   number2: Math.floor(Math.random() * 10)
-      // },
+      {
+        number1: Math.floor(Math.random() * 10),
+        number2: Math.floor(Math.random() * 10)
+      },
       // {
       //   number1: Math.floor(Math.random() * 10),
       //   number2: Math.floor(Math.random() * 10)

@@ -10,15 +10,9 @@
     </header>
 
     <section class="mt-4">
-        <!-- <div class="alert alert-info alert-dismissible d-flex" role="alert">
-            <div class="alert-message ">
-                <span id="message"></span>
-            </div>
-            <div class="icon tick"><i class="fas fa-check"></i></div>
-        </div> -->
+        <div #container></div>
         <div class="game__Container-question">
-            <div class="game__Container-equation"
-                *ngIf="((question_data[index].number1 && question_data[index].number2 !== null ))">
+            <div class="game__Container-equation">
                 <div class="equation__element">
                     <h1 id="number1">{{question_data[index].number1}}</h1>
                 </div>
@@ -32,7 +26,7 @@
                     <h1>=</h1>
                 </div>
                 <div class="equation__element">
-                    <input #answer type="text" (keyup.enter)="onEnter(answer.value)" class="p-1">
+                    <input #answer type="text" (keyup.enter)="onEnter(answer.value)" class="p-1" id="input">
                 </div>
             </div>
         </div>
